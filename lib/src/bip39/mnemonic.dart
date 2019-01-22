@@ -61,7 +61,7 @@ class MnemonicUtils {
   }
 
   static List<String> populateWordList() {
-    var config = new File("lib/src/resources/en-mnemonic-word-list.txt");
+    var config = new File("package:eth_wallet_dart/src/resources/en-mnemonic-word-list.txt");
     List<String> lines = config.readAsLinesSync();
     return lines;
   }
