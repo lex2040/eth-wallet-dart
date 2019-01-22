@@ -8,17 +8,18 @@ import 'package:pointycastle/digests/sha512.dart';
 import "package:pointycastle/key_derivators/api.dart";
 import "package:pointycastle/key_derivators/pbkdf2.dart";
 import 'package:pointycastle/macs/hmac.dart';
+import '../resources/english.dart';
 
 class MnemonicUtils {
   static final int SEED_ITERATIONS = 2048;
   static final int SEED_KEY_SIZE = 64;
-  static List<String> WORD_LIST = null;
+  static List<String> WORD_LIST = WORDLIST;
 
   /// Generate the mnemonic string list from an secure initial entropy data
   static String generateMnemonic(Uint8List initialEntropy) {
-    if (WORD_LIST == null) {
-      WORD_LIST = populateWordList();
-    }
+    // if (WORD_LIST == null) {
+    //   WORD_LIST = populateWordList();
+    // }
 
     validateInitialEntropy(initialEntropy);
 
@@ -60,11 +61,11 @@ class MnemonicUtils {
     return masterSeedByteArray;
   }
 
-  static List<String> populateWordList() {
-    var config = new File("package:eth_wallet_dart/src/resources/en-mnemonic-word-list.txt");
-    List<String> lines = config.readAsLinesSync();
-    return lines;
-  }
+  // static List<String> populateWordList() {
+  //   var config = new File("package:eth_wallet_dart/src/resources/en-mnemonic-word-list.txt");
+  //   List<String> lines = config.readAsLinesSync();
+  //   return lines;
+  // }
 
   static void validateInitialEntropy(Uint8List initialEntropy) {
     if (initialEntropy == null) {
